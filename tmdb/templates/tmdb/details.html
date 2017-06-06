@@ -1,0 +1,23 @@
+<h1>{{b.movie_title}}</h1>
+<br>
+<p>
+Public date: {{b.pub_date}}<br>
+<br>
+Rating:{{b.rating}}<br>
+<br>
+Language:{{b.language}}<br>
+<br>
+Overview:{{b.overview}}<br>
+<br>
+<h3>cast:</h3><br>
+{% for i in b.character_set.all %}
+  {{ i.movie_character}} :    {{i.movie_actor}}
+  <br>
+{% endfor %}
+<h3>review:</h3><br>
+{% for i in b.review_set.all %}
+  {{ i.movie_review}} <br>
+  {{i.author}}<br>
+  <br>
+{% endfor %}
+</p>
