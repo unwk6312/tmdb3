@@ -1,0 +1,112 @@
+<script>
+
+    
+function process()
+{
+var url="/tmdb/" + document.getElementById("url").value;
+location.href=url;
+return false;
+}
+
+function process2()
+{
+var url="/tmdb/people/" + document.getElementById("url2").value;
+location.href=url;
+return false;
+}
+</script>
+
+<style>
+header{font-family:Gabriola; font-size:500%}
+
+
+
+.mySlides {margin-left:55%}
+</style>
+
+{% load static %}
+
+
+
+<header ><center> <img src="{% static "tmdb/images/10.gif" %}" style="width:10%;height:15%" alt="My image"/>Rotten Potatoes <img src="{% static "tmdb/images/10.gif" %}" style="width:10%;height:15%" alt="My image"/></center></header><br>
+<br> 
+
+<p>
+
+<div class="w3-content w3-section" style="max-width:500px">
+    {% for i in k %}
+  <a href='/tmdb/{{i.movie_id}}/details/'><img class="mySlides"src={{i.image}} alt={{i.movie_title}} style="center"/></a>
+  {% endfor %}
+</div>
+
+<script>
+var myIndex = 0;
+carousel();
+
+function carousel() {
+    var i;
+    var x = document.getElementsByClassName("mySlides");
+    for (i = 0; i < x.length; i++) {
+       x[i].style.display = "none";  
+    }
+    myIndex++;
+    if (myIndex > x.length) {myIndex = 1}    
+    x[myIndex-1].style.display = "block";  
+    setTimeout(carousel, 3500); // Change image every 2 seconds
+}
+</script>
+</p>
+
+
+
+
+
+
+
+
+<form action="/tmdb/news/today/" method="post" >
+{% csrf_token %}
+<input type="submit" value="Playing" style="position: absolute; right: 180;" />
+</form>
+
+
+
+
+<form onSubmit="return process();">
+&ensp;&ensp;&ensp;Movie: <input type="text" name="url" id="url"> <input type="submit" value="go">
+</form>
+
+
+
+
+
+<form action="/tmdb/news/coming/" method="post">
+{% csrf_token %}
+<input type="submit" value="Upcoming" style="position: absolute; right: 120;" />
+</form>
+
+
+
+<form onSubmit="return process2();">
+&ensp;&ensp;&ensp;    People: <input type="text" name="url2" id="url2"> <input type="submit" value="go">
+</form>
+
+
+
+<form action="/tmdb/news/popular/" method="post">
+{% csrf_token %}
+<input type="submit" value="Popular" style="position: absolute; right: 60;"/>
+</form>
+
+<footer>
+{% load static %}
+&ensp;<a href='https://www.dal.ca/academics/programs/graduate/internetworking.html'><img src="{% static "tmdb/images/11.jpg" %}" style="width:15%;height:9%" alt="My image"/></a>
+<p style="text-align:center">Copyright © RottenPotatoes.com </p>
+</footer>
+
+
+
+
+
+
+

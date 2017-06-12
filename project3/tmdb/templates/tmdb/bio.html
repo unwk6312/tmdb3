@@ -1,0 +1,27 @@
+<h1> Name:{{b.name}}</h1><br>
+
+<p>
+{% if b.image == "tmdb/images/n.jpg" %}
+    {% load static %}
+    <img src="{% static "tmdb/images/n.jpg" %}" alt="My image"/><br>
+{% else %}
+<img src={{b.image}} alt={{b.movie_title}}/><br>
+{% endif %}
+  Birthday: {{b.birthday}}<br>
+<br>
+Gender:{{b.gender}}<br>
+  <br>
+  Place of Birth:{{b.place_of_birth}}<br>
+  <br>
+Biography:<br>{{b.biography}}<br>
+<br>
+known:<br>
+{% for i in b.known1_set.all %}
+  
+  <a href='/tmdb/{{i.movie_id}}/details/'>{{ i.title}} </a>    ({{i.release_date}})<br>
+  charactor:{{i.character}}<br>
+  <br>
+{% endfor %}
+
+</p>
+ 

@@ -1,0 +1,11 @@
+<h1>{{a.movie_text}}</h1>
+<p>
+
+<br>
+{% for movie in a.movie_set.all %}
+  
+  <a href='/tmdb/{{movie.movie_id}}/details/'>{{ movie.movie_title}} </a>    ({{movie.pub_date}})<br>
+  {{movie.movie_overview}}<br>
+  <br>
+{% endfor %}
+</p>

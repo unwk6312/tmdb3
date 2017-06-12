@@ -1,0 +1,14 @@
+<h1>{{a.name_text}}</h1>
+<p>
+  <h4> results: {{a.total}}</h4>
+    <br><br>
+    {% for i in a.name_set.all %}
+    
+     <a href='/tmdb/bio/{{i.people_id}}/'>  {{ i.name}}  </a> <br>
+      known for:  {{i.known}} <br>
+    <br>
+    {% endfor %}
+
+
+
+</p>

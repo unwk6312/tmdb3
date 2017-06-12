@@ -1,0 +1,38 @@
+<h1>{{b.movie_title}}</h1>
+
+{% if b.movie_title != b.movie_original_title %}
+aliase:{{b.movie_original_title}}<br>
+{% endif %}
+<br>
+<p>
+Public date: {{b.pub_date}}<br>
+<br>
+{%if b.rating != 0 and b.movie_title != 'Cars 3' %}
+ Rating:{{b.rating}}<br>
+{% endif %}
+
+<br>
+Language:{{b.language}}<br>
+<br>
+Overview:{{b.overview}}<br>
+<br>
+{% if b.image == "tmdb/images/n.jpg" %}
+    {% load static %}
+    <img src="{% static "tmdb/images/n.jpg" %}" alt="My image"/><br>
+{% else %}
+<img src={{b.image}} alt={{b.movie_title}}/><br>
+{% endif %}
+<a href={{b.trailer}}>(trailer)</a><br>
+<h3>cast:</h3><br>
+{% for i in b.character_set.all %}
+  {{ i.movie_character}} :  <a href='/tmdb/bio/{{i.actor_id}}/'>  {{i.movie_actor}}</a>
+  <br>
+{% endfor %}
+<h3>review:</h3><br>
+{% for i in b.review_set.all %}
+  {{ i.movie_review}} <br>
+  {{i.author}}<br>
+  <br>
+{% endfor %}
+</p>
+

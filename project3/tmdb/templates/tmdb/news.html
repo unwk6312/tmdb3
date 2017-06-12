@@ -1,0 +1,25 @@
+<h1> Now Playing: </h1>
+<p>
+{% for i in k %}
+  
+<h4><a href='/tmdb/{{i.movie_id}}/details/'>{{i.title}}:</a></h4> 
+{% if i.image == "tmdb/images/n.jpg" %}
+    {% load static %}
+    <img src="{% static "tmdb/images/n.jpg" %}" alt="My image"/>
+{% else %}
+<a href='/tmdb/{{i.movie_id}}/details/'>
+<img src={{i.image}} alt={{i.movie_title}}/><br>
+
+</a>
+{% endif %}
+<a href={{i.trailer}}>(trailer)</a><br>
+
+ language:{{i.original_language}}<br>
+ rating:{{i.vote_average}}<br>
+ release_date:{{i.release_date}}<br>
+ overview:{{i.overview}}
+ <br><br>
+{% endfor %}
+</p>
+
+
